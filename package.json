@@ -1,15 +1,23 @@
 {
   "name": "remotion-pitch",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Software promotional video production workspace",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@fontsource/inter": "5.3.0",
     "@remotion/cli": "4.0.534",
+    "@remotion/fonts": "4.0.534",
+    "@remotion/layout-utils": "4.0.534",
+    "@remotion/media": "4.0.534",
+    "@remotion/paths": "4.0.534",
+    "@remotion/transitions": "4.0.534",
+    "@remotion/zod-types": "4.0.534",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "remotion": "4.0.534"
+    "remotion": "4.0.534",
+    "zod": "4.5.4"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.534",
@@ -20,9 +28,17 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
+    "dev": "remotion studio --no-open",
+    "studio": "remotion studio --no-open",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck",
+    "compositions": "remotion compositions src/index.ts",
+    "still": "remotion still src/index.ts MotionStudy out/motion-study.png --frame=180",
+    "still:vault": "remotion still src/index.ts VaultPitch out/vault-storyboard.png --frame=660",
+    "render:hd": "remotion render src/index.ts VaultPitch out/vault-pitch.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p",
+    "render:4k": "remotion render src/index.ts MotionStudy4K out/motion-study-4k.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p"
   }
 }
